@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Weather</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Map dependencies -->
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+    <!-- Chart dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+     
+        <h1>Happy Weather</h1>
+          <div style="text-align: right; padding: 10px;">
+                <button id="themeToggle" aria-label="Toggle theme" style="background: none; border: none; cursor: pointer;">
+                <input type ="button" value="🌗" alt="theme" id="themeIcon" style="height:60px; width:60px; font-size:30px; text-align:center;"/>
+            </button>
+          </div> 
+
+    <div class="search-container">
+        <input type="text" id="cityInput" placeholder="Enter city name...">
+        <button id="searchBtn">Search</button>
+        <button id="voiceSearchBtn">Voice Search</button>
+    </div>
+<div class="map-weather-wrapper">
+        <section class="map-container">
+            <!-- Leaflet CSS and JS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<!-- Your map container -->
+<div id="map"</div>
+
+        </section>
+
+        <section class="weather-container"><center><h2> Weather details</h2>
+            <div class="weather-card">
+                <div id="currentWeather"></div>
+                <div id="airQuality"></div>
+                <div id="sunTimes"></div>
+            </div></center>
+        </section>
+
+        <section class="image-slider">
+            <div id="cityImages"></div>
+            <button class="slider-btn prev">❮</button>
+            <button class="slider-btn next">❯</button>
+        </section>
+    </div>
+
+    <section class="forecast-container">
+        <h2>5-Day Forecast</h2><br><br>
+        <div id="forecast"></div>
+    </section>
+
+    <section class="precipitation-container">
+        <h2>Precipitation Forecast</h2>
+        <canvas id="precipChart"></canvas>
+    </section>
+
+    <section class="city-description">
+        <h2>City Information</h2>
+        <div id="cityInfo"></div>
+    </section>
+
+    <section class="games-container">
+        <div class="quiz-container">
+            <h3>Weather Quiz</h3><br>
+            <div id="quizContent"></div>
+            <div id="scoreBoard"></div><br><br>
+            <button id="nextQuestion"style="height:50px;width:150px;font-size:15px;" >Skip Question</button>
+        </div>
+        
+        <div class="converter-container">
+            <h3>Temperature Converter</h3><br>
+           <br><h4>Celsius ⮂ Fahrenheit</h4><br>
+            <div class="converter">
+                <input type="number" id="celsius" placeholder="Celsius">
+                <button id="convertBtn">→</button>
+                <input type="number" id="fahrenheit" placeholder="Fahrenheit">
+            </div>
+        </div>
+    </section>
+
+    <footer class="help-container">
+        <h3>Need Help?</h3>
+        <p>Contact us: <a href="mailto:cherinpappu207@gmail.com">cherinpappu207@gmail.com</a></p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="toggle.js"></script>
+    <script src="search.js"></script>
+    <script src="map.js"></script>
+    <script src="weather.js"></script>
+    <script src="image.js"></script>
+    <script src="precipitation.js"></script>
+    <script src="forecast.js"></script>
+    <script src="description.js"></script>
+    <script src="game.js"></script>
+    <script src="help.js"></script>
+</body>
+</html>

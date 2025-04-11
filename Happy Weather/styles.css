@@ -1,0 +1,403 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #2196f3;
+    --secondary-color: #f50057;
+    --background-light: #ffffff;
+    --background-dark: #121212;
+    --text-light: #333333;
+    --text-dark: #ffffff;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('sun.gif');
+    background-size: cover;           /* Ensures it covers the screen */
+    background-repeat: no-repeat;     /* Prevents duplication */
+    background-position: center; /* Keeps it centered on all devices */
+    background-attachment: fixed;     /* Optional: keeps it fixed while scrolling */
+    opacity: 1;
+    z-index: -1;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    
+}
+.dark-mode::before {
+     content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1000%;
+    background-image: url('stars.png');
+   background-size: cover;    
+    background-repeat:repeat;     /* Prevents duplication */
+    background-position: center; /* Keeps it centered on all devices */
+    background-attachment: fixed;     /*
+    opacity: 1; /* Adjust this value between 0 (fully transparent) and 1 (fully opaque) */
+    z-index: -1;
+}
+
+/* Header styles */
+
+h1 {
+    color: #000099;
+    font-size: clamp(40px, 8vw, 130px); /* Responsive font size */
+    text-align: center;
+    margin: 1rem 0;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+    -webkit-text-stroke: 0.5px white;
+}
+
+
+/* Light and dark mode overrides */
+.light-mode h1 {
+    color: #ff0000;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode h1 {
+    color: #000080;
+    text-shadow: 2px 2px 4px rgba(173, 216, 230, 0.5);
+}
+.dark-mode .precipitation-container {
+    color: white;
+}
+
+#themeToggle {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+
+
+/* Search container styles */
+.search-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+}
+
+.search-container input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.search-container button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+#searchBtn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#voiceSearchBtn {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.search-container button:hover {
+    transform: scale(1.05);
+}
+
+/* Dashboard layout */
+.dashboard {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+/* ========== Layout Wrapper ========== */
+.map-weather-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+}
+
+/* Side by side on wider screens */
+@media (min-width: 768px) {
+    .map-weather-wrapper {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .map-container, .weather-container {
+        flex: 1;
+        max-width: 48%;
+    }
+}
+
+/* ========== Map Styles ========== */
+.map-container {
+    width: 100%;
+    height: 100vh;
+    margin: auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    min-height: 300px;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    min-width: 300px;
+}
+
+/* ========== Weather Display Styles ========== */
+.weather-container {
+    backdrop-filter: blur(10px);
+    background-color: rgba(128, 0, 128, 0.3);
+    border-radius: 15px;
+    padding: 20px;
+   font-size:25px;
+    color: white;
+    min-height: 300px;
+}
+
+.weather-container h2 {
+    margin-bottom: 15px;
+}
+
+.weather-card {
+    display: grid;
+    gap: 20px;
+}
+
+/* ========== Image Slider Styles ========== */
+.image-slider {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    max-height=700px;
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.city-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.image-slider button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+/* ========== Slider Buttons ========== */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(7, 9, 7, 0.5);
+    color: white;
+    border: none;
+    padding: 20px;
+    cursor: pointer;
+    font-size: 24px;
+    transition: background-color 0.3s;
+    z-index: 10;
+}
+
+.slider-btn.prev { left: 0; }
+.slider-btn.next { right: 0; }
+
+.slider-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+
+/* Forecast styles */
+.forecast-container {
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 128, 128, 0.3);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+.dark-mode .forecast-container {
+    color: white;
+}
+#forecast {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+/* Precipitation chart styles */
+.precipitation-container {
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 128, 0.3);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+/* City description styles */
+.city-description {
+    backdrop-filter: blur(10px);
+    background-color: rgba(0,128, 0, 0.3);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+.dark-mode .city-description  {
+    color: white;
+}
+/* Games container styles */
+.games-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+.dark-mode .games-container  {
+    color: white;
+}
+.dark-mode .quiz-container,
+.converter-container   {
+    color: white;
+}
+.dark-mode .help-container{
+    color: white;
+}
+/* Individual game sections */
+.quiz-container,
+.converter-container {
+    flex: 1 1 100%;
+    backdrop-filter: blur(10px);
+    background-color: rgba(128, 0, 0, 0.3);
+    border-radius: 15px;
+    padding: 20px;
+    font-size: 20px;
+}
+
+/* Layout for screens wider than 768px (side-by-side) */
+@media (min-width: 768px) {
+    .quiz-container,
+    .converter-container {
+        flex: 1 1 calc(50% - 10px);
+    }
+}
+
+.converter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.converter input,
+.converter select {
+    font-size: 20px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    flex: 1;
+    min-width: 100px;
+}
+
+.converter button {
+    font-size: 15px;
+    padding: 12px 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.converter button:hover {
+    background-color: #333;
+}
+
+
+/* Help container styles */
+.help-container {
+    text-align: center;
+    background-color: rgba(23, 25, 24, 0.3);
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .dashboard {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .image-slider {
+        grid-column: span 2;
+    }
+    
+    .games-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+    
+    .search-container {
+        flex-direction: column;
+    }
+    
+    .slider-btn {
+        padding: 10px;
+        font-size: 18px;
+    }
+}
+.quiz-option {
+    transition: background-color 0.3s ease;
+}
+
